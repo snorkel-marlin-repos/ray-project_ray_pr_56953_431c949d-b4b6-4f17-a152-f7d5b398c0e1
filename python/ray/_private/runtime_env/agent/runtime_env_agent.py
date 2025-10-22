@@ -19,6 +19,7 @@ from ray._private.runtime_env.context import RuntimeEnvContext
 from ray._private.runtime_env.default_impl import get_image_uri_plugin_cls
 from ray._private.runtime_env.image_uri import ContainerPlugin
 from ray._private.runtime_env.java_jars import JavaJarsPlugin
+from ray._private.runtime_env.mpi import MPIPlugin
 from ray._private.runtime_env.nsight import NsightPlugin
 from ray._private.runtime_env.pip import PipPlugin
 from ray._private.runtime_env.plugin import (
@@ -219,6 +220,7 @@ class RuntimeEnvAgent:
         # and unify with nsight and other profilers.
         self._nsight_plugin = NsightPlugin(self._runtime_env_dir)
         self._rocprof_sys_plugin = RocProfSysPlugin(self._runtime_env_dir)
+        self._mpi_plugin = MPIPlugin()
         self._image_uri_plugin = get_image_uri_plugin_cls()(temp_dir)
 
         # TODO(architkulkarni): "base plugins" and third-party plugins should all go
@@ -235,6 +237,7 @@ class RuntimeEnvAgent:
             self._container_plugin,
             self._nsight_plugin,
             self._rocprof_sys_plugin,
+            self._mpi_plugin,
             self._image_uri_plugin,
         ]
         self._plugin_manager = RuntimeEnvPluginManager()
