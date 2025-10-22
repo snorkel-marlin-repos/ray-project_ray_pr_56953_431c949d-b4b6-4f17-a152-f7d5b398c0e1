@@ -559,6 +559,7 @@ py_test_module_list(
         "test_metrics_agent_2.py",
         "test_microbenchmarks.py",
         "test_mini.py",
+        "test_mpi.py",
         "test_multinode_failures_2.py",
         "test_node_death.py",
         "test_numba.py",
@@ -779,7 +780,7 @@ py_test_module_list(
         "test_autoscaler_azure.py",
         "test_autoscaler_gcp.py",
         "test_autoscaler_util.py",
-        "test_azure_ssh_config.py",
+        "test_azure_path_serialization.py",
     ],
     tags = [
         "exclusive",
